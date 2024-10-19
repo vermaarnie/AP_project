@@ -7,13 +7,16 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class LevelScreen implements Screen {
     private Game game;
+
     private Texture level_back_ground;
     private SpriteBatch batch;
     private Stage stg;
@@ -36,6 +39,24 @@ public class LevelScreen implements Screen {
         TextButton button2 = new TextButton("Continue Game",skin);
         TextButton button3 = new TextButton("Exit Game",skin);
 
+        button1.addListener(new ClickListener(){
+            public void clicked(InputEvent event ,float x,float y){
+//                game.setScreen(new PlayScreen(game,false));
+                game.setScreen(new loadingScreen(game));
+            }
+        });
+
+        button2.addListener(new ClickListener() {
+            public void clicked(InputEvent event,float x,float y){
+                System.out.println("continue Game clicked");
+            }
+        });
+
+        button3.addListener(new ClickListener(){
+            public void clicked(InputEvent event,float x ,float y){
+                Gdx.app.exit();
+            }
+        });
         Table tbl = new Table();
         tbl.center();
         tbl.setFillParent(true);
