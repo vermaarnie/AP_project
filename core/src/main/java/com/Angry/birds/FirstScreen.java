@@ -53,7 +53,9 @@ public class FirstScreen implements Screen{
 
     @Override
     public void resize(int width, int height) {
-        // Resize your screen here. The parameters represent the new window size.
+        // Resize your screen here. The parameters
+        // represent the new window size.
+
     }
 
     @Override
@@ -76,5 +78,6 @@ public class FirstScreen implements Screen{
         // Destroy screen's assets here.
         starting_back_ground.dispose();
         batch.dispose();
+        line.dispose();
     }
 }
