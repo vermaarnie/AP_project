@@ -1,5 +1,4 @@
 package com.Angry.birds;
-
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -11,52 +10,56 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-import java.awt.*;
-
-public class LevelScreen implements Screen {
+public class HomeScreen implements Screen{
     private Game game;
     private Texture level_back_ground;
     private SpriteBatch batch;
     private Stage stage;
     private Skin skin;
 
-    public LevelScreen(Game game){
+    public HomeScreen(Game game){
         this.game=game;
     }
+
     @Override
-    public void show() {
+    public void show(){
         stage=new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
         skin=new Skin(Gdx.files.internal("uiskin.json"));
 
-        TextButton level1=new TextButton("Level 1",skin);
-        TextButton level2=new TextButton("Level 2",skin);
-        TextButton level3=new TextButton("Level 3",skin);
+        TextButton newGameButton=new TextButton("New Game",skin);
+        TextButton continueButton=new TextButton("Continue Game",skin);
+        TextButton exitButton=new TextButton("Exit Game",skin);
 
-
-        TextButton to_home = new TextButton("Back",skin);
-        to_home.addListener(new ClickListener(){
+        newGameButton.addListener(new ClickListener(){
             @Override
-            public void clicked(InputEvent event, float x, float y){
-                to_homescreen();
+            public void clicked(InputEvent event,float x,float y){
+                startNewGame();
             }
         });
-        level1.addListener(new ClickListener(){
+
+        continueButton.addListener(new ClickListener(){
+            @Override
             public void clicked(InputEvent event,float x,float y){
-                to_level1screen();
+//                continueSavedGame();
+            }
+        });
+
+        exitButton.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event,float x,float y){
+                Gdx.app.exit();
             }
         });
 
         Table table=new Table();
         table.setFillParent(true);
         table.center();
-        table.add(level1).padBottom(20).row();
-        table.add(level2).padBottom(20).row();
-        table.add(level3).padBottom(20).row();
-        table.add(to_home).padTop(10).padLeft(10);
+        table.add(newGameButton).padBottom(20).row();
+        table.add(continueButton).padBottom(20).row();
+        table.add(exitButton);
 
         stage.addActor(table);
 
@@ -64,16 +67,18 @@ public class LevelScreen implements Screen {
         batch=new SpriteBatch();
     }
 
-    private void to_homescreen(){
-        game.setScreen(new HomeScreen(game));
+    private void startNewGame(){
+        game.setScreen(new LevelScreen(game));
     }
 
-    private void to_level1screen(){
-        game.setScreen(new Level1Screen(game));
-    }
+//    private void continueSavedGame(){
+//// In the future, this method will load the last saved level
+//// For now, it just starts Level 1
+//        game.setScreen(new LevelScreen(game));
+//    }
 
     @Override
-    public void render(float delta) {
+    public void render(float delta){
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(Gdx.gl.GL_COLOR_BUFFER_BIT);
 
@@ -83,32 +88,29 @@ public class LevelScreen implements Screen {
 
         stage.act(delta);
         stage.draw();
-
     }
 
     @Override
-    public void resize(int width, int height) {
+    public void resize(int width,int height){
         stage.getViewport().update(width,height,true);
-
     }
 
     @Override
-    public void pause() {
+    public void pause(){}
 
+    @Override
+    public void resume(){}
+
+    @Override
+    public void hide(){
+        dispose();
     }
 
     @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
+    public void dispose(){
+        stage.dispose();
+        skin.dispose();
+        level_back_ground.dispose();
+        batch.dispose();
     }
 }

@@ -45,8 +45,8 @@ public class loadingScreen implements Screen {
         batch.end();
 
 
-        if(timer >= 5){
-            game.setScreen(new LevelScreen(game));
+        if(timer >= 2){
+            game.setScreen(new HomeScreen(game));
         }
 
 
