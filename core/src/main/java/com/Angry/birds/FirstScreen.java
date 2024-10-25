@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import java.awt.*;
 
@@ -17,6 +18,8 @@ public class FirstScreen implements Screen{
     private SpriteBatch batch;
     private BitmapFont line;
     private GlyphLayout glp;
+    private Stage stg;
+
 
     public FirstScreen(Game game){
         this.game  = game;
@@ -25,6 +28,7 @@ public class FirstScreen implements Screen{
     public void show() {
         line = new BitmapFont();
         glp = new GlyphLayout();
+        stg = new Stage();
 
         starting_back_ground = new Texture(Gdx.files.internal("backmenu.jpg"));
         batch = new SpriteBatch();
@@ -32,7 +36,7 @@ public class FirstScreen implements Screen{
 
     @Override
     public void render(float delta) {
-        // Draw your screen here. "delta" is the time since last render in seconds.
+
         Gdx.gl.glClearColor(0,0,0,1);
 
         batch.begin();
@@ -45,7 +49,8 @@ public class FirstScreen implements Screen{
 
         line.draw(batch,glp,X,Y);
         batch.end();
-
+        stg.act(delta);
+        stg.draw();
         if(Gdx.input.isTouched()){
             game.setScreen(new loadingScreen(game));
         }
@@ -53,29 +58,27 @@ public class FirstScreen implements Screen{
 
     @Override
     public void resize(int width, int height) {
-        // Resize your screen here. The parameters
-        // represent the new window size.
-
+        stg.getViewport().update(width,height,true);
     }
 
     @Override
     public void pause() {
-        // Invoked when your application is paused.
+
     }
 
     @Override
     public void resume() {
-        // Invoked when your application is resumed after pause.
+
     }
 
     @Override
     public void hide() {
-        // This method is called when another screen replaces this one.
+
     }
 
     @Override
     public void dispose() {
-        // Destroy screen's assets here.
+
         starting_back_ground.dispose();
         batch.dispose();
         line.dispose();
