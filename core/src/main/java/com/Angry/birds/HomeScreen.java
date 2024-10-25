@@ -43,7 +43,7 @@ public class HomeScreen implements Screen{
         continueButton.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event,float x,float y){
-//                continueSavedGame();
+                continueSavedGame();
             }
         });
 
@@ -71,11 +71,11 @@ public class HomeScreen implements Screen{
         game.setScreen(new LevelScreen(game));
     }
 
-//    private void continueSavedGame(){
-//// In the future, this method will load the last saved level
-//// For now, it just starts Level 1
-//        game.setScreen(new LevelScreen(game));
-//    }
+    private void continueSavedGame(){
+// In the future, this method will load the last saved level
+// For now, it just starts Level 1
+        game.setScreen(new Level1Screen(game));
+    }
 
     @Override
     public void render(float delta){
