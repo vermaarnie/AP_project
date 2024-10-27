@@ -67,6 +67,10 @@ public class Level1Screen implements Screen {
         block5 = new Block(new Texture(Gdx.files.internal("Wood1.png")),610,147);
         block6 = new Block(new Texture(Gdx.files.internal("Wood2_Rotated.png")),743,78);
         TextButton pause_button = new TextButton("Pause",skin);
+        TextButton dummy1 = new TextButton("win",skin);
+        TextButton dummy2 = new TextButton("loss",skin);
+        dummy1.setPosition(10,Gdx.graphics.getHeight() -80);
+        dummy2.setPosition(10,Gdx.graphics.getHeight() -110);
         pause_button.setPosition(10,Gdx.graphics.getHeight() - 50);
         pause_button.addListener(new ClickListener(){
             public void clicked(InputEvent event,float x,float y){
@@ -74,8 +78,23 @@ public class Level1Screen implements Screen {
 
             }
         });
+        dummy1.addListener(new ClickListener(){
+            public void clicked(InputEvent event,float x,float y){
+                game.setScreen(new WinningScreen(game));
+
+            }
+        });
+        dummy2.addListener(new ClickListener(){
+            public void clicked(InputEvent event,float x,float y){
+                game.setScreen(new LossingScreen(game));
+
+
+            }
+        });
 
         stg.addActor(pause_button);
+        stg.addActor(dummy1);
+        stg.addActor(dummy2);
     }
 
 
