@@ -30,16 +30,25 @@ public class PauseScreen implements Screen {
         skin = new Skin(Gdx.files.internal("uiskin.json"));
 
         TextButton resume = new TextButton("Resume",skin);
+        TextButton restart = new TextButton("Restart",skin);
         TextButton exit = new TextButton("Exit to levels",skin);
 
-        resume.setPosition(Gdx.graphics.getWidth()/2 - 50,Gdx.graphics.getHeight()/2 + 50);
+
+        resume.setPosition((float)Gdx.graphics.getWidth()/2 - 50,(float)Gdx.graphics.getHeight()/2 + 50);
         resume.addListener(new ClickListener(){
             public void clicked(InputEvent event ,float x,float y){
                 game.setScreen(prev_screen);
             }
         });
 
-        exit.setPosition(Gdx.graphics.getWidth()/2 - 50,Gdx.graphics.getHeight()/2 - 50);
+        restart.setPosition((float)Gdx.graphics.getWidth()/2 - 50 ,(float)Gdx.graphics.getHeight()/2);
+        restart.addListener(new ClickListener(){
+            public void clicked(InputEvent event,float x,float y){
+                game.setScreen(new Level1Screen(game));
+            }
+        });
+
+        exit.setPosition((float)Gdx.graphics.getWidth()/2 - 50,(float)Gdx.graphics.getHeight()/2 - 50);
         exit.addListener(new ClickListener(){
             public void clicked(InputEvent event ,float x,float y){
                 game.setScreen(new LevelScreen(game));
@@ -47,6 +56,7 @@ public class PauseScreen implements Screen {
         });
 
         stg.addActor(resume);
+        stg.addActor(restart);
         stg.addActor(exit);
 
 
@@ -85,6 +95,7 @@ public class PauseScreen implements Screen {
 
     @Override
     public void dispose() {
+        prev_screen.dispose();
         stg.dispose();
         skin.dispose();
 

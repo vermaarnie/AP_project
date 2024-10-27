@@ -56,7 +56,7 @@ public class Level1Screen implements Screen {
         skin = new Skin(Gdx.files.internal("uiskin.json"));
         bird1=new Bird(new Texture(Gdx.files.internal("Red.png")),10,80);
         bird2=new Bird(new Texture(Gdx.files.internal("Red.png")),50,80);
-        bird3=new Bird(new Texture(Gdx.files.internal("Red.png")),110,150);
+        bird3=new Bird(new Texture(Gdx.files.internal("Chuck.png")),110,150);
         pig1 = new Pig(new Texture(Gdx.files.internal("pig.png")),540,143);
         pig2 = new Pig(new Texture(Gdx.files.internal("pig.png")),610,213);
         pig3 = new Pig(new Texture(Gdx.files.internal("pig.png")),680,143);
@@ -156,9 +156,10 @@ public class Level1Screen implements Screen {
         block6.dispose();
 
 
-        batch.dispose();
+
         level_background.dispose();
         ground.dispose();
+        batch.dispose();
 
         stg.dispose();
         skin.dispose();

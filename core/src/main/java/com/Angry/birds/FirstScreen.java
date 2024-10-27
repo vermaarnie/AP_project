@@ -80,7 +80,9 @@ public class FirstScreen implements Screen{
     public void dispose() {
 
         starting_back_ground.dispose();
-        batch.dispose();
+
         line.dispose();
+        batch.dispose();
+        stg.dispose();
     }
 }

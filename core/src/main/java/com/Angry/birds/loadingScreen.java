@@ -45,7 +45,7 @@ public class loadingScreen implements Screen {
         batch.end();
 
 
-        if(timer >= 2){
+        if(timer >= 1){
             game.setScreen(new HomeScreen(game));
         }
 
@@ -74,6 +74,7 @@ public class loadingScreen implements Screen {
 
     @Override
     public void dispose() {
+        loading_screen.dispose();
         batch.dispose();
 
 

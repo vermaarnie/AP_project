@@ -109,6 +109,10 @@ public class LevelScreen implements Screen {
 
     @Override
     public void dispose() {
+        level_back_ground.dispose();
+        batch.dispose();
+        stage.dispose();
+        skin.dispose();
 
     }
 }

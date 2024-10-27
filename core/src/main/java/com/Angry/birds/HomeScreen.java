@@ -108,9 +108,11 @@ public class HomeScreen implements Screen{
 
     @Override
     public void dispose(){
-        stage.dispose();
-        skin.dispose();
+
         level_back_ground.dispose();
         batch.dispose();
+        skin.dispose();
+        stage.dispose();
+
     }
 }
