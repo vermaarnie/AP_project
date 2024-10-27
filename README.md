@@ -2,7 +2,7 @@
 Angry Birds static GUI
 Arnie Verma - 2023130
 Harish Yadav - 2023226
-
+GO TO THE MASTER BRANCH FOR THE CODE
 The Game will start by running the AngryGame Class which will start a new Game
 Loading Screen is their between the firstscreen and the homescreen.
 After that three options are their New Game, continue Game, Exit
