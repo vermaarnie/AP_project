@@ -10,7 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class HomeScreen implements Screen{
     private Game game;
@@ -18,6 +21,7 @@ public class HomeScreen implements Screen{
     private SpriteBatch batch;
     private Stage stage;
     private Skin skin;
+
 
     public HomeScreen(Game game){
         this.game=game;
@@ -64,6 +68,7 @@ public class HomeScreen implements Screen{
         stage.addActor(table);
 
         level_back_ground=new Texture(Gdx.files.internal("background.jpg"));
+
         batch=new SpriteBatch();
     }
 
@@ -82,6 +87,8 @@ public class HomeScreen implements Screen{
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(Gdx.gl.GL_COLOR_BUFFER_BIT);
 
+
+
         batch.begin();
         batch.draw(level_back_ground,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         batch.end();
@@ -92,6 +99,8 @@ public class HomeScreen implements Screen{
 
     @Override
     public void resize(int width,int height){
+
+
         stage.getViewport().update(width,height,true);
     }
 
@@ -108,6 +117,7 @@ public class HomeScreen implements Screen{
 
     @Override
     public void dispose(){
+
 
         level_back_ground.dispose();
         batch.dispose();
