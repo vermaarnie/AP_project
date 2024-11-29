@@ -2,12 +2,15 @@ Angry Birds static GUI
 Arnie Verma - 2023130
 Harish Yadav - 2023226
 
-The Game will start by running the AngryGame Class which will start a new Game
-Loading Screen is their between the firstscreen and the homescreen.
-After that three options are their New Game, continue Game, Exit
-New game button will open the levelscreen which will have three level option
-only first one will get open up
-pause button is their to pause the screen.
-dummy button win/loss is also their to just show the winning and lossing screen
-continue game will open the first level for now.
-exit will close the application.
+This is the ReadMe File for the Angry Birds game for the AP Project. This is a recreation of the Angry Birds game.
+
+First, starting with the slingshot, we have a drag and release mechanism which is used to launch the bird. First, we drag the bird, and then, depending on the situation of the game, launch the bird on a particular angle.
+We have three levels depending on the difficulty level. We rated them level 1, level 2, and level 3. You have three birds to complete every level. If we hit all the pigs, then the game would be completed if not false. If the bird stops, it vanishes, and then the new bird comes on slingshot. We have a pause button, which has three buttons resume, which resumes the code, and then we have a restart level and end to level, which brings to the level screen  
+this is the basic overview of the project and the code, which is done in the code 
+
+Like in serialization, we have the text file in which the data of all pig blocks is stored when we resume so we get things at their right place 
+
+In this, we have a random level also in which, on clicking the random level, we get a random level. 
+ 
+ 
+In the J unit testing, we tested three things. First, we did a destroyed test on the bird. Second, bird reset; and third in, cement hit points
