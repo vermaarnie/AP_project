@@ -69,14 +69,14 @@ public class LevelScreen1 implements Screen {
 
 
         blocks = new ArrayList<>();
-        blocks.add(new Block(blockTexture1, world, 640, 70, 24, 206, 0f,2));
-        blocks.add(new Block(blockTexture3, world, 760, 70, 24, 206, 0f,2));
-        blocks.add(new Block(blockTexture2, world, 700, 300, 206, 24, 0f,2));
+        blocks.add(new Block(blockTexture1, world, 640, 70, 24, 206, 1f,2));
+        blocks.add(new Block(blockTexture3, world, 760, 70, 24, 206, 1f,2));
+        blocks.add(new Block(blockTexture2, world, 700, 300, 206, 24, 1f,2));
 
 
         pigs = new ArrayList<>();
         pigs.add(new Pig(pigTexture1, world, 580, 70,1));
-        pigs.add(new Pig(pigTexture2, world, 700, 70, 1));
+        pigs.add(new Pig(pigTexture2, world, 700, 70, 2));
         pigs.add(new Pig(pigTexture3, world, 800, 70, 1));
 
         createGround();
@@ -180,7 +180,7 @@ public class LevelScreen1 implements Screen {
         for (Block block : blocks) {
             if (block.isHit(bird.getBody())) {
                 System.out.println("Bird hit a block!");
-                block.takeDamage(); // Reduce block health
+                block.takeDamage();
                 bird.incrementHitCount();
             }
         }
@@ -211,7 +211,7 @@ public class LevelScreen1 implements Screen {
 
 
             Vector2 currentPosition = new Vector2(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY());
-            Vector2 dragVector = currentPosition.sub(initialPosition); // Calculate drag vector
+            Vector2 dragVector = currentPosition.sub(initialPosition);
 
 
             if (dragVector.len() > 40) {

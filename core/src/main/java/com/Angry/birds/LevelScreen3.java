@@ -199,7 +199,7 @@ public class LevelScreen3 implements Screen {
         for (Block block : blocks) {
             if (block.isHit(bird.getBody())) {
                 System.out.println("Bird hit a block!");
-                block.takeDamage(); // Reduce block health
+                block.takeDamage();
                 bird.incrementHitCount();
             }
         }

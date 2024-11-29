@@ -55,7 +55,7 @@ public class LevelScreen2 implements Screen {
     public void show() {
         batch = new SpriteBatch();
         background = new Texture(Gdx.files.internal("level_background.png"));
-        groundTexture = new Texture(Gdx.files.internal("ground.png")); // Load ground texture
+        groundTexture = new Texture(Gdx.files.internal("ground.png"));
         imageTexture = new Texture(Gdx.files.internal("Slingshot.png"));
         pigTexture1 = new Texture(Gdx.files.internal("guard_pig.png"));
         pigTexture2 = new Texture(Gdx.files.internal("pig_king.png"));
@@ -72,21 +72,21 @@ public class LevelScreen2 implements Screen {
 
 
         blocks = new ArrayList<>();
-        blocks.add(new Block(blockTexture1, world, 660, 70, 24, 206, 0.5f,2));
-        blocks.add(new Block(blockTexture3, world, 760, 70, 24, 206, 0.5f,2));
-        blocks.add(new Block(blockTexture2, world, 700, 300, 206, 24, 0.5f,2));
-        blocks.add(new Block(blockTexture4, world, 540, 70, 70, 70, 0.5f,2));
-        blocks.add(new Block(blockTexture5, world, 540, 140, 70, 70, 0.5f,2));
+        blocks.add(new Block(blockTexture1, world, 660, 70, 24, 206, 1f,2));
+        blocks.add(new Block(blockTexture3, world, 760, 70, 24, 206, 1f,2));
+        blocks.add(new Block(blockTexture2, world, 700, 300, 206, 24, 1f,2));
+        blocks.add(new Block(blockTexture4, world, 540, 70, 70, 70, 1f,2));
+        blocks.add(new Block(blockTexture5, world, 540, 140, 70, 70, 1f,2));
 
         pigs = new ArrayList<>();
         pigs.add(new Pig(pigTexture1, world, 600, 70,1));
-        pigs.add(new Pig(pigTexture2, world, 700, 70, 1));
+        pigs.add(new Pig(pigTexture2, world, 700, 70, 2));
         pigs.add(new Pig(pigTexture3, world, 800, 70, 1));
 
 
 
         pigs.add(new Pig(pigTexture4, world, 540, 200,1));
-        pigs.add(new Pig(pigTexture5, world, 700, 320, 1));
+        pigs.add(new Pig(pigTexture5, world, 700, 320, 2));
         pigs.add(new Pig(pigTexture6, world, 480, 70, 1));
         stage = new Stage();
         skin = new Skin(Gdx.files.internal("uiskin.json"));
@@ -138,7 +138,7 @@ public class LevelScreen2 implements Screen {
         currentBirdIndex++;
 
         if (currentBirdIndex < birds.size()) {
-            // Switch to the next bird
+
             bird = birds.get(currentBirdIndex);
             bird.setPosition(initialBirdPosition.x, initialBirdPosition.y);
             isBirdLaunched = false;
@@ -202,7 +202,7 @@ public class LevelScreen2 implements Screen {
         for (Block block : blocks) {
             if (block.isHit(bird.getBody())) {
                 System.out.println("Bird hit a block!");
-                block.takeDamage(); // Reduce block health
+                block.takeDamage();
                 bird.incrementHitCount();
             }
         }
