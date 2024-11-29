@@ -2,6 +2,9 @@
 eclipse.project.name = appName + '-core'
 
 dependencies {
+  testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+
+  testImplementation 'org.mockito:mockito-core:5.5.0'
   api "com.badlogicgames.ashley:ashley:$ashleyVersion"
   api "com.badlogicgames.box2dlights:box2dlights:$box2dlightsVersion"
   api "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
@@ -34,4 +37,7 @@ dependencies {
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
   }
+}
+test {
+  useJUnitPlatform()  // Enables JUnit 5 platform
 }

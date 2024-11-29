@@ -14,14 +14,17 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class LossingScreen implements Screen {
     private Game game;
+    private Screen previousLevel;
     private Texture loss_screen;
     private SpriteBatch batch;
     private Stage stg;
     private Skin skin;
 
-    LossingScreen(Game game){
+    public LossingScreen(Game game, Screen previousLevel) {
         this.game = game;
+        this.previousLevel = previousLevel;
     }
+
     @Override
     public void show() {
         batch = new SpriteBatch();
@@ -29,50 +32,47 @@ public class LossingScreen implements Screen {
         Gdx.input.setInputProcessor(stg);
         skin = new Skin(Gdx.files.internal("uiskin.json"));
         loss_screen = new Texture(Gdx.files.internal("loss.png"));
-        TextButton back = new TextButton("back", skin);
-        back.setPosition((float) Gdx.graphics.getWidth() / 2 -50 , (float) Gdx.graphics.getHeight() / 2 + 50);
 
-        back.addListener(new ClickListener() {
+
+        TextButton tryAgain = new TextButton("Try Again", skin);
+        tryAgain.setPosition((float) Gdx.graphics.getWidth() / 2 - 50, (float) Gdx.graphics.getHeight() / 2 + 50);
+        tryAgain.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new Level1Screen(game));
+                game.setScreen(new LevelScreen(game));
             }
         });
-        stg.addActor(back);
+
+
+
+        stg.addActor(tryAgain);
 
     }
+
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0,0,0,1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
 
         batch.begin();
-        batch.draw(loss_screen,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        batch.draw(loss_screen, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.end();
 
         stg.act(delta);
         stg.draw();
-
     }
 
     @Override
     public void resize(int width, int height) {
-        stg.getViewport().update(width,height,true);
-
+        stg.getViewport().update(width, height, true);
     }
 
     @Override
-    public void pause() {
-
-    }
+    public void pause() {}
 
     @Override
-    public void resume() {
-
-    }
+    public void resume() {}
 
     @Override
-    public void hide() {
-
-    }
+    public void hide() {}
 
     @Override
     public void dispose() {
@@ -80,7 +80,5 @@ public class LossingScreen implements Screen {
         batch.dispose();
         skin.dispose();
         stg.dispose();
-
-
     }
 }
