@@ -1,5 +1,5 @@
 # AP_project
-Angry Birds static GUI
+Angry Birds
 Arnie Verma - 2023130
 Harish Yadav - 2023226
 GO TO THE MASTER BRANCH FOR THE CODE
